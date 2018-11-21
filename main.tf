@@ -1,11 +1,10 @@
+data "external" "example" {
+  program = ["bash", "${path.module}/runme.sh"]
+}
+
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
-
-  provisioner "local-exec" {
-    command = "bash runme.sh"
-  }
-
   metadata {
     name = "terraform-example"
 
@@ -38,4 +37,8 @@ resource "kubernetes_replication_controller" "example" {
       }
     }
   }
+}
+
+output "run" {
+  value = "${data.external.example.result.run}"
 }
