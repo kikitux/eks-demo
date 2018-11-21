@@ -2,6 +2,10 @@ resource "null_resource" "local_install" {
   provisioner "local-exec" {
     command = "bash ${path.module}/scripts/provision.sh"
   }
+
+  triggers {
+    timestamp = "${timestamp()}"
+  }
 }
 
 provider "kubernetes" {}

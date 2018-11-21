@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# echo path
-echo ${PATH}
-
 exec 5>&1 &>/dev/null
 
 # from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
@@ -25,8 +22,3 @@ sudo chmod +x aws-iam-authenticator
 popd
 
 exec 1>&5
-
-aws --version
-kubectl version --short --client
-aws-iam-authenticator help
-
