@@ -11,6 +11,8 @@ resource "null_resource" "local_install" {
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
+  depends_on = ["external.example"]
+
   metadata {
     name = "terraform-example"
 
@@ -48,3 +50,4 @@ resource "kubernetes_replication_controller" "example" {
 #output "run" {
 #  value = "${data.external.example.result.run}"
 #}
+
