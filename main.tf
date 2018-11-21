@@ -2,6 +2,12 @@ data "external" "example" {
   program = ["bash", "${path.module}/runme.sh"]
 }
 
+resource "null_resource" "local_install" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/provision.sh"
+  }
+}
+
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
