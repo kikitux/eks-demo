@@ -4,7 +4,7 @@
 
 resource "null_resource" "local_install" {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/provision.sh"
+    command = "bash ${path.module}/scripts/provision.sh"
   }
 }
 
