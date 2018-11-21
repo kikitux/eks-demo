@@ -3,6 +3,8 @@
 # echo path
 echo ${PATH}
 
+exec 5>&1 &>/dev/null
+
 # from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
@@ -21,6 +23,8 @@ sudo curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com
 sudo chmod +x aws-iam-authenticator
 
 popd
+
+exec 1>&5
 
 aws --version
 kubectl version --short --client
