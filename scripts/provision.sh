@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# echo path
+echo ${PATH}
 
 # from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"

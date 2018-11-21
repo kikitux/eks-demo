@@ -1,6 +1,6 @@
-data "external" "example" {
-  program = ["bash", "${path.module}/runme.sh"]
-}
+#data "external" "example" {
+#  program = ["bash", "${path.module}/runme.sh"]
+#}
 
 resource "null_resource" "local_install" {
   provisioner "local-exec" {
@@ -45,6 +45,6 @@ resource "kubernetes_replication_controller" "example" {
   }
 }
 
-output "run" {
-  value = "${data.external.example.result.run}"
-}
+#output "run" {
+#  value = "${data.external.example.result.run}"
+#}
