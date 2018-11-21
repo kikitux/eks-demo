@@ -1,0 +1,8 @@
+.terraform/
+.vagrant/
+Vagrantfile
+alvaro.env
+eks-getting-started/
+scripts/
+terraform.tfstate
+terraform.tfstate.backup
