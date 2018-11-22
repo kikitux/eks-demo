@@ -3,6 +3,8 @@ data "external" "local_install" {
 }
 
 resource "null_resource" "local_install" {
+  depends_on = ["data.external.local_install"]
+
   provisioner "local-exec" {
     command = "bash ${path.module}/scripts/null.sh"
   }
@@ -13,6 +15,8 @@ resource "null_resource" "local_install" {
 }
 
 resource "null_resource" "local_install_on_destroy" {
+  depends_on = ["data.external.local_install"]
+
   provisioner "local-exec" {
     command = "bash ${path.module}/scripts/null.sh"
     when    = "destroy"
@@ -22,7 +26,7 @@ resource "null_resource" "local_install_on_destroy" {
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
-  depends_on = ["data.external.local_install","null_resource.local_install"]
+  depends_on = ["data.external.local_install", "null_resource.local_install"]
 
   metadata {
     name = "terraform-example"
