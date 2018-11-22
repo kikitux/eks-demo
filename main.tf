@@ -8,6 +8,13 @@ resource "null_resource" "local_install" {
   }
 }
 
+resource "null_resource" "local_install_on_destroy" {
+  provisioner "local-exec" {
+    command = "bash ${path.module}/scripts/provision.sh"
+    when    = "destroy"
+  }
+}
+
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
