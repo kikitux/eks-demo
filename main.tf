@@ -1,4 +1,4 @@
-data "external" "example" {
+data "external" "local_install" {
   program = ["bash", "${path.module}/scripts/data.sh"]
 }
 
@@ -22,7 +22,7 @@ resource "null_resource" "local_install_on_destroy" {
 provider "kubernetes" {}
 
 resource "kubernetes_replication_controller" "example" {
-  depends_on = ["null_resource.local_install"]
+  depends_on = ["data.external.local_install","null_resource.local_install"]
 
   metadata {
     name = "terraform-example"
