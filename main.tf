@@ -1,6 +1,10 @@
+data "external" "example" {
+  program = ["bash", "${path.module}/scripts/data.sh"]
+}
+
 resource "null_resource" "local_install" {
   provisioner "local-exec" {
-    command = "bash ${path.module}/scripts/provision.sh"
+    command = "bash ${path.module}/scripts/null.sh"
   }
 
   triggers {
@@ -10,7 +14,7 @@ resource "null_resource" "local_install" {
 
 resource "null_resource" "local_install_on_destroy" {
   provisioner "local-exec" {
-    command = "bash ${path.module}/scripts/provision.sh"
+    command = "bash ${path.module}/scripts/null.sh"
     when    = "destroy"
   }
 }
